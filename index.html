@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tư liệu Giáo dục địa phương Huế</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple-deep: #4A0072;
+  --purple-main: #6A0DAD;
+  --purple-mid: #8B2FC9;
+  --purple-light: #C084FC;
+  --purple-pale: #EDE9F6;
+  --purple-ghost: #F5F0FF;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-pale: #FBF5E6;
+  --white: #FFFEF9;
+  --text-dark: #1A0A2E;
+  --text-mid: #3D2065;
+  --text-soft: #7B5EA7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ===== ORNAMENT PATTERN ===== */
+.ornament-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ornament-bg::before, .ornament-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(74, 0, 114, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
+  background: rgba(74, 0, 114, 0.99);
+  box-shadow: 0 4px 30px rgba(74,0,114,0.4);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+.logo-sub {
+  font-size: 0.65rem;
+  color: var(--purple-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+nav a:hover { color: var(--gold-light); }
+nav a:hover::after { width: 100%; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold-light);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0;
+  background: rgba(74,0,114,0.98);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  z-index: 999;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding-bottom: 1rem;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ===== DECORATIVE DIVIDER ===== */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+.divider-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.divider-line.rev { background: linear-gradient(to left, transparent, var(--gold)); }
+.divider-gem {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ===== HERO ===== */
+#home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--purple-deep);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(106,13,173,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(74,0,114,0.8) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(139,47,201,0.3) 0%, transparent 40%);
+}
+
+/* SVG pattern overlay for royal Hue aesthetic */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='1'%3E%3Cpath d='M30 0 L35 10 L45 10 L37 17 L40 27 L30 21 L20 27 L23 17 L15 10 L25 10 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Decorative lotus/wave SVG elements */
+.hero-lotus-left, .hero-lotus-right {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.hero-lotus-left { left: -60px; }
+.hero-lotus-right { right: -60px; transform: scaleX(-1); }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 5%;
+  max-width: 800px;
+  animation: heroFadeIn 1.2s ease forwards;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4);
+  padding: 6px 20px;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  background: rgba(201,168,76,0.08);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--gold) 0%, #A8762A 100%);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+.hero-river {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  overflow: hidden;
+}
+.river-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Bridge silhouette on hero */
+.bridge-silhouette {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* ===== SECTION STYLES ===== */
+section { padding: 90px 5%; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--purple-deep);
+  line-height: 1.2;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  max-width: 520px;
+  margin: 1rem auto 0;
+  line-height: 1.8;
+}
+
+/* ===== INTRO SECTION ===== */
+#intro {
+  background: var(--gold-pale);
+  position: relative;
+  overflow: hidden;
+}
+#intro::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.intro-card {
+  background: var(--white);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.intro-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--purple-main), var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left;
+}
+.intro-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(106,13,173,0.12); }
+.intro-card:hover::before { transform: scaleX(1); }
+
+.intro-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 1.2rem;
+  background: var(--purple-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.intro-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--purple-deep);
+  margin-bottom: 0.8rem;
+}
+
+.intro-card p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.8;
+}
+
+/* ===== BRIDGES SECTION ===== */
+#bridges {
+  background: var(--white);
+  position: relative;
+}
+
+.bridges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.bridge-card {
+  border: 1px solid rgba(106,13,173,0.1);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: var(--white);
+  transition: all 0.4s ease;
+}
+.bridge-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(106,13,173,0.18);
+  border-color: rgba(201,168,76,0.4);
+}
+
+.bridge-img {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bridge-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  transition: transform 0.6s ease;
+}
+
+.bridge-card:hover .bridge-img-placeholder { transform: scale(1.08); }
+
+/* Each bridge has a unique gradient */
+.bridge-truong-tien .bridge-img-placeholder { background: linear-gradient(135deg, #2C0060 0%, #6A0DAD 40%, #C084FC 100%); }
+.bridge-phu-xuan .bridge-img-placeholder { background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 50%, #7EB8D4 100%); }
+.bridge-da-vien .bridge-img-placeholder { background: linear-gradient(135deg, #1a4a2e 0%, #2d8f56 50%, #7ED4A0 100%); }
+.bridge-bach-ho .bridge-img-placeholder { background: linear-gradient(135deg, #4a1a00 0%, #9f4a0d 50%, #D4907E 100%); }
+
+.bridge-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(74,0,114,0.7) 100%);
+}
+
+.bridge-year-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(201,168,76,0.9);
+  color: var(--text-dark);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  letter-spacing: 0.1em;
+}
+
+.bridge-info {
+  padding: 1.5rem;
+}
+
+.bridge-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--purple-deep);
+  margin-bottom: 0.4rem;
+}
+
+.bridge-location {
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.bridge-desc {
+  font-size: 0.87rem;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.bridge-card .divider { margin: 0.8rem 0; justify-content: flex-start; }
+.bridge-card .divider-line { width: 40px; }
+
+/* ===== FIGURES SECTION ===== */
+#figures {
+  background: linear-gradient(180deg, var(--purple-ghost) 0%, var(--white) 100%);
+  position: relative;
+}
+
+.figures-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.figure-card {
+  background: var(--white);
+  border: 1px solid rgba(106,13,173,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.figure-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(106,13,173,0.15);
+}
+
+.figure-portrait{
+  position:relative;
+  height:220px;
+  width:100%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ẢNH FIT KHUNG */
+.figure-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* QUAN TRỌNG */
+  object-position:center; /* căn giữa mặt */
+}
+
+.figure-nguyen-du .figurefigure-portrait { background: linear-gradient(160deg, #FFF3E0, #F0D9B5); }
+.figure-hai-trieu .figure-p-portrait { background: linear-gradient(160deg, #F3E8FF, #DDD0F0); }
+.figure-nguyen-truong-to .ortrait { background: linear-gradient(160deg, #E8F5E9, #B5D9BC); }
+.figure-phan-boi-chau .figure-portrait { background: linear-gradient(160deg, #FCE4EC, #F0B5C3); }
+
+.figure-portrait-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(106,13,173,0.15);
+  pointer-events: none;
+}
+
+.figure-body {
+  padding: 1.5rem 1.2rem;
+}
+
+.figure-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--purple-deep);
+  margin-bottom: 0.3rem;
+}
+
+.figure-years {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.figure-field {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 3px 12px;
+  background: var(--purple-pale);
+  color: var(--purple-main);
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.figure-contribution {
+  font-size: 0.84rem;
+  color: var(--text-soft);
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--purple-main);
+  color: var(--purple-main);
+  padding: 8px 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.3s;
+  background: transparent;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: var(--purple-main);
+  color: var(--white);
+}
+
+/* ===== GALLERY SECTION ===== */
+#gallery {
+  background: var(--purple-deep);
+  position: relative;
+  overflow: hidden;
+}
+
+#gallery .section-title { color: var(--gold-light); }
+#gallery .section-label { color: var(--purple-light); }
+#gallery .section-desc { color: rgba(255,255,255,0.6); }
+#gallery .divider-gem { background: var(--gold); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 160px);
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(5) { grid-column: span 2; }
+
+.gallery-thumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:nth-child(1) .gallery-thumb { background: linear-gradient(135deg, #3D0066 0%, #8B2FC9 100%); font-size: 5rem; }
+.gallery-item:nth-child(2) .gallery-thumb { background: linear-gradient(135deg, #1a2a5a, #3d6db5); }
+.gallery-item:nth-child(3) .gallery-thumb { background: linear-gradient(135deg, #3a1a00, #8B4513); }
+.gallery-item:nth-child(4) .gallery-thumb { background: linear-gradient(135deg, #0d3322, #1a6644); }
+.gallery-item:nth-child(5) .gallery-thumb { background: linear-gradient(135deg, #4a0059, #9B2FD4); }
+.gallery-item:nth-child(6) .gallery-thumb { background: linear-gradient(135deg, #2a2200, #7a6200); }
+.gallery-item:nth-child(7) .gallery-thumb { background: linear-gradient(135deg, #001a3a, #004080); }
+.gallery-item:nth-child(8) .gallery-thumb { background: linear-gradient(135deg, #1a0030, #5C0090); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(74,0,114,0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover .gallery-thumb { transform: scale(1.08); }
+
+.gallery-overlay span {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.gallery-overlay p {
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open { display: flex; }
+.lightbox-inner {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.lightbox-content {
+  width: 100%;
+  min-height: 350px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  background: linear-gradient(135deg, var(--purple-deep), var(--purple-mid));
+  margin-bottom: 1rem;
+}
+.lightbox-caption {
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+}
+.lightbox-close {
+  position: absolute;
+  top: -40px; right: 0;
+  color: var(--white);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--gold); }
+
+/* ===== CONTACT SECTION ===== */
+#contact {
+  background: var(--gold-pale);
+  position: relative;
+}
+
+.contact-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--purple-deep);
+  margin-bottom: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.contact-item-icon {
+  width: 40px; height: 40px;
+  background: var(--purple-pale);
+  border: 1px solid rgba(106,13,173,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.contact-item-text {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+.contact-item-text strong {
+  display: block;
+  color: var(--purple-deep);
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.contact-form {
+  background: var(--white);
+  padding: 2.5rem;
+  border: 1px solid rgba(201,168,76,0.2);
+  position: relative;
+}
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--purple-main), var(--gold));
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 0.5rem;
+}
+.form-group input, .form-group textarea {
+  width: 100%;
+  border: 1px solid rgba(106,13,173,0.15);
+  padding: 12px 16px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+  border-radius: 0;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: var(--purple-main);
+  box-shadow: 0 0 0 3px rgba(106,13,173,0.08);
+}
+.form-group textarea { height: 110px; resize: vertical; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--purple-deep);
+  padding: 3rem 5% 1.5rem;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-brand .logo-main { font-size: 1.1rem; margin-bottom: 0.8rem; display: block; }
+.footer-brand p {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 260px;
+}
+
+.footer-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+.footer-col a {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  margin-bottom: 0.6rem;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--gold-light); }
+
+.social-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.social-link {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6) !important;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.social-link:hover {
+  background: rgba(201,168,76,0.2);
+  border-color: var(--gold);
+  color: var(--gold-light) !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .bridges-grid { grid-template-columns: 1fr; }
+  .figures-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; height: 200px; }
+  .gallery-item:nth-child(5) { grid-column: span 2; }
+  .gallery-item { height: 150px; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .intro-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 70px 5%; }
+  .figures-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .bridges-grid { grid-template-columns: 1fr; }
+}
+
+
+
+
+.figure-nguyen-tri-phuong .figure-portrait{
+  position:relative;
+  height:220px;
+  overflow:hidden;
+}
+
+.figure-nguyen-tri-phuong .figure-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top; /* giữ phần mặt */
+}
+
+
+
+
+
+.portrait-tonthatthuyet {
+  position: relative;
+  width: 100%;   /* SỬA từ 10% → 100% */
+  height: 220px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.portrait-tonthatthuyet .figure-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position:  center 20%;
+  display: block;
+}
+
+.figure-dang-huy-tru .figure-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%; /* 👈 tăng số này để ảnh xuống */
+}
+
+
+.bridge-img{
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.bridge-img-real{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.bridge-phu-xuan .bridge-img-real{
+  object-position: center 100%; /* 👈 giảm số để nhích ảnh lên */
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="logo">
+    <span class="logo-main">Tư liệu Giáo dục Địa phương Huế</span>
+    <span class="logo-sub">Di sản · Văn hóa · Lịch sử</span>
+  </div>
+  <nav>
+    <a href="#home">Trang chủ</a>
+    <a href="#bridges">Giáo dục địa phương lớp 10</a>
+    <a href="#figures">Giáo dục địa phương lớp 11</a>
+    <a href="#contact">Liên hệ</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">🏠 Trang chủ</a>
+  <a href="#bridges" onclick="closeMenu()">🌉 Giáo dục địa phương lớp 10</a>
+  <a href="#figures" onclick="closeMenu()">👤 Giáo dục địa phương lớp 11</a>
+  <a href="#contact" onclick="closeMenu()">📞 Liên hệ</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="ornament-bg"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  
+  <!-- Decorative bridge silhouette SVG -->
+  <div class="bridge-silhouette">
+    <svg viewBox="0 0 900 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Truong Tien Bridge arch silhouette -->
+      <ellipse cx="150" cy="90" rx="120" ry="30" fill="rgba(255,255,255,0.05)"/>
+      <ellipse cx="450" cy="90" rx="140" ry="35" fill="rgba(255,255,255,0.05)"/>
+      <ellipse cx="750" cy="90" rx="120" ry="30" fill="rgba(255,255,255,0.05)"/>
+      <path d="M30 80 Q150 20 270 80 Q390 140 510 80 Q630 20 750 80 Q870 140 900 80" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+      <rect x="0" y="78" width="900" height="3" fill="rgba(201,168,76,0.2)"/>
+      <!-- Bridge pillars -->
+      <rect x="268" y="50" width="4" height="35" fill="rgba(201,168,76,0.2)"/>
+      <rect x="510" y="50" width="4" height="35" fill="rgba(201,168,76,0.2)"/>
+    </svg>
+  </div>
+
+  <!-- Gentle river wave at bottom -->
+  <div class="hero-river">
+    <svg class="river-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
+      <path d="M0,80 C200,110 400,50 600,80 C800,110 1000,50 1200,80 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.03)"/>
+      <path d="M0,100 C200,120 400,80 600,100 C800,120 1000,80 1200,100 L1200,120 L0,120 Z" fill="rgba(255,253,249,0.06)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-badge">✦ Giáo dục địa phương ✦</span>
+    <h1 class="hero-title">
+      Khám phá vẻ đẹp<br>
+      <em>văn hóa và lịch sử Huế</em>
+    </h1>
+    <div class="divider">
+      <div class="divider-line" style="background: linear-gradient(to right, transparent, rgba(201,168,76,0.6))"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line" style="background: linear-gradient(to left, transparent, rgba(201,168,76,0.6))"></div>
+    </div>
+    <p class="hero-desc">
+      Hành trình khám phá di sản văn hóa đặc sắc của vùng đất Cố đô — nơi sông Hương thơ mộng, những cây cầu lịch sử và danh nhân lưu danh muôn thuở.
+    </p>
+    <a href="#bridges" class="btn-primary">🔍 Khám phá ngay</a>
+  </div>
+</section>
+
+<!-- INTRO CARDS -->
+<section id="intro">
+  <div class="section-header">
+    <span class="section-label">✦ Tổng quan ✦</span>
+    <h2 class="section-title">Di sản của một vùng đất</h2>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line rev"></div></div>
+    <p class="section-desc">Huế — Cố đô của triều Nguyễn, nơi hội tụ tinh hoa văn hóa, kiến trúc và con người Việt Nam.</p>
+  </div>
+  <div class="intro-grid">
+    <div class="intro-card fade-up">
+      <div class="intro-icon">🏛️</div>
+      <h3>Giá trị văn hóa Huế</h3>
+      <p>Di sản thế giới UNESCO với Quần thể di tích Cố đô Huế — kiến trúc cung đình độc đáo, âm nhạc cung đình Nhã nhạc và nghệ thuật ẩm thực tinh tế.</p>
+    </div>
+    <div class="intro-card fade-up" style="transition-delay: 0.15s">
+      <div class="intro-icon">🌉</div>
+      <h3>Ý nghĩa các cây cầu</h3>
+      <p>Những cây cầu bắc qua sông Hương không chỉ là công trình giao thông mà còn là biểu tượng văn hóa, chứng nhân lịch sử của vùng đất Cố đô.</p>
+    </div>
+    <div class="intro-card fade-up" style="transition-delay: 0.3s">
+      <div class="intro-icon">👑</div>
+      <h3>Danh nhân tiêu biểu</h3>
+      <p>Huế tự hào là quê hương của nhiều danh nhân văn hóa và yêu nước — từ đại thi hào Nguyễn Du đến chí sĩ Phan Bội Châu với khát vọng độc lập dân tộc.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- BRIDGES, RIVER , MOUTAIN -->
+<section id="bridges">
+  <div class="section-header">
+    <span class="section-label">✦ Chủ đề danh thắng và di tích lịch sử văn hóa Huế ✦</span>
+    <h2 class="section-title">Những cây cầu Huế</h2>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line rev"></div></div>
+    <p class="section-desc">Mỗi cây cầu là một trang lịch sử, in dấu bao thế hệ người Huế qua sông Hương thơ mộng.</p>
+  </div>
+  <div class="bridges-grid">
+
+
+
+
+
+
+
+
+
+
+     <div class="bridge-card bridge-truong-tien fade-up">
+  <div class="bridge-img">
+    <img 
+      src="https://digiticket.vn/blog/wp-content/uploads/2021/06/C%E1%BA%A7u-tr%C3%A0ng-ti%E1%BB%81n-1.jpg" 
+      alt="Cầu Trường Tiền"
+      class="bridge-img-real"
+    >
+
+    <div class="bridge-img-placeholder"></div>
+    <div class="bridge-overlay"></div>
+    <span class="bridge-year-badge">1897-1899</span>
+  </div>
+  <div class="bridge-info">
+    <div class="divider"><div class="divider-line" style="background: linear-gradient(to right, var(--gold), transparent); width:50px"></div></div>
+    <h3 class="bridge-name">Cầu Trường Tiền</h3>
+    <div class="bridge-location">📍 Sông Hương, Thành phố Huế</div>
+    <p class="bridge-desc">Biểu tượng của Huế, được người Pháp xây dựng năm 1897 - 1899 theo thiết kế của hãng Eiffel. Cầu có sáu nhịp dầm thép vòm cong thanh mảnh, dài 401,1 m. Trải qua nhiều lần trùng tu, cầu Trường Tiền vẫn giữ vẻ đẹp cổ kính và là hình ảnh không thể thiếu trong thơ ca, nhạc họa về xứ Huế.</p>
+    <a href="Cau/Trangtien.html" class="btn-outline" style="margin-top:1rem;display:flex;justify-content:center;">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+<div class="bridge-card bridge-phu-xuan fade-up" style="transition-delay:0.1s">
+  <div class="bridge-img">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Hue_Vietnam_Perfume-River-03.jpg" 
+      class="bridge-img-real"
+    >
+
+    <div class="bridge-img-placeholder"></div>
+    <div class="bridge-overlay"></div>
+    <span class="bridge-year-badge">1971</span>
+  </div>
+  <div class="bridge-info">
+    <div class="divider"><div class="divider-line" style="background: linear-gradient(to right, var(--gold), transparent); width:50px"></div></div>
+    <h3 class="bridge-name">Cầu Phú Xuân</h3>
+    <div class="bridge-location">📍 Sông Hương, phía Nam Huế</div>
+    <p class="bridge-desc">Nằm về phía Nam thành phố, cầu Phú Xuân được xây dựng năm 1971, nối liền bờ Bắc và bờ Nam sông Hương, góp phần phục vụ giao thông quan trọng của Huế. Tên cầu gợi nhớ tên gọi cũ của Huế — Phú Xuân — kinh đô dưới thời các chúa Nguyễn và vua Nguyễn.</p>
+    <a href="Cau/PhuXuan.html" class="btn-outline" style="margin-top:1rem;display:flex;justify-content:center;">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+<div class="bridge-card bridge-da-vien fade-up" style="transition-delay:0.2s">
+  <div class="bridge-img">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/C%E1%BA%A7u_D%C3%A3_Vi%C3%AAn.jpg/1280px-C%E1%BA%A7u_D%C3%A3_Vi%C3%AAn.jpg" 
+      class="bridge-img-real"
+    >
+
+    <div class="bridge-img-placeholder">🌿</div>
+    <div class="bridge-overlay"></div>
+    <span class="bridge-year-badge">2009</span>
+  </div>
+  <div class="bridge-info">
+    <div class="divider"><div class="divider-line" style="background: linear-gradient(to right, var(--gold), transparent); width:50px"></div></div>
+    <h3 class="bridge-name">Cầu Dã Viên</h3>
+    <div class="bridge-location">📍 Sông Hương, phía Tây Huế</div>
+    <p class="bridge-desc">Bắc qua sông Hương tại vị trí gần cù lao Dã Viên — hòn đảo nhỏ nên thơ giữa lòng sông Hương. Cầu Dã Viên là câu cầu mang dấu ấn quan trọng của thời kì đổi mới tỉnh Thừa Thiên Huế trong thế kỉ XXI.Đây là cầu đường bộ bắc qua sông Hương, nối từ đường Lê Duẩn(quốc lộ 1A) sang đường Bùi Thị Xuân, có ý nghĩa giao thông và du lịch quan trọng, nằm trong bức tranh thiên nhiên hữu tình của xứ Huế.</p>
+    <a href="Cau/DaVien.html" class="btn-outline" style="margin-top:1rem;display:flex;justify-content:center;">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+<div class="bridge-card bridge-bach-ho fade-up" style="transition-delay:0.3s">
+  <div class="bridge-img">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/c/c5/C%E1%BA%A7u_ng%C3%B3i_Thanh_To%C3%A0n2.jpg" 
+      class="bridge-img-real"
+    >
+
+    <div class="bridge-img-placeholder">🏡</div>
+    <div class="bridge-overlay"></div>
+    <span class="bridge-year-badge">1776</span>
+  </div>
+  <div class="bridge-info">
+    <div class="divider"><div class="divider-line" style="background: linear-gradient(to right, var(--gold), transparent); width:50px"></div></div>
+    <h3 class="bridge-name">Cầu Ngói Thanh Toàn</h3>
+    <div class="bridge-location">📍 Làng Thanh Toàn, Hương Thủy, Thừa Thiên Huế</div>
+    <p class="bridge-desc">Cây cầu ngói cổ kính được xây dựng vào khoảng năm 1776 triều Lê, do bà Trần Thị Đạo — cháu đời thứ 6 của dòng họ trần — hiến tặng cho dân làng. Cầu dài 18.75m (43 thước mộc), có mái ngói che phủ theo kiểu kiến trúc Nhật Bản, là di tích lịch sử – văn hóa cấp quốc gia và điểm du lịch đặc sắc của Huế.</p>
+    <a href="Cau/Ngoi.html" class="btn-outline" style="margin-top:1rem;display:flex;justify-content:center;">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+<div class="bridge-card bridge-bach-ho fade-up" style="transition-delay:0.4s">
+  <div class="bridge-img">
+    <img 
+      src="https://static1.cafeland.vn/cafelandnew/hinh-anh/2025/07/26/191/image-20250726115313-2.jpeg" 
+      class="bridge-img-real"
+    >
+
+    <div class="bridge-img-placeholder">🌁</div>
+    <div class="bridge-overlay"></div>
+    <span class="bridge-year-badge">2025</span>
+  </div>
+  <div class="bridge-info">
+    <div class="divider"><div class="divider-line" style="background: linear-gradient(to right, var(--gold), transparent); width:50px"></div></div>
+    <h3 class="bridge-name">Cầu Nguyễn Hoàng</h3>
+    <div class="bridge-location">📍 Sông Hương, Thành phố Huế</div>
+    <p class="bridge-desc">Cây cầu hiện đại được khánh thành năm 2025, nối đường Nguyễn Hoàng với đường Bùi Thị Xuân qua sông Hương. Cầu dài 380m, được thiết kế theo phong cách cầu dây văng hiện đại, góp phần giảm tải giao thông cho cầu Trường Tiền và phát triển đô thị hai bờ sông Hương.</p>
+    <a href="Cau/NguyenHoang.html" class="btn-outline" style="margin-top:1rem;display:flex;justify-content:center;">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- FIGURES -->
+<section id="figures">
+  <div class="section-header">
+    <span class="section-label">✦ Danh nhân Huế ✦</span>
+    <h2 class="section-title">Danh nhân chính trị và quân sự</h2>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line rev"></div></div>
+  </div>
+  <div class="figures-grid">
+
+
+
+
+
+
+ <div class="figure-card figure-nguyen-du fade-up">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <!-- ẢNH -->
+    <img 
+      src="https://nld.mediacdn.vn/291774122806476800/2023/9/15/vinh1-16947506831791120498682.jpg" 
+      alt="Nguyễn Chí Thanh"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Nguyễn Chí Thanh</h3>
+    <div class="figure-years">1914 – 1967</div>
+    <span class="figure-field">Đại tướng Quân đội</span>
+    <p class="figure-contribution">
+      Vị Đại tướng tài ba, nhà lãnh đạo kiên cường — biểu tượng của ý chí cách mạng và tinh thần chiến đấu bất khuất.
+    </p>
+    <a href="NCT.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+
+
+<div class="figure-card figure-nguyen-tri-phuong fade-up">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <!-- ẢNH -->
+    <img 
+      src="https://honguyenvietnam.org/vi/uploads/news/2019_05/anhcu_ntp_2010_031.jpg" 
+      alt="Nguyễn Tri Phương"
+      class="figure-img"
+    >
+
+  </div>
+
+        <div class="figure-body">
+          <h3 class="figure-name">Nguyễn Tri Phương</h3>
+          <div class="figure-years">1800 – 1873</div>
+          <span class="figure-field">Danh tướng triều Nguyễn</span>
+          <p class="figure-contribution">
+            Vị danh tướng trung liệt của triều Nguyễn, nổi tiếng với tinh thần chống Pháp kiên cường, 
+            chiến đấu đến hơi thở cuối cùng để bảo vệ đất nước.
+          </p>
+          <a href="NTP.html" class="btn-outline">📖 Xem chi tiết</a>
+        </div>
+      </div>
+
+
+
+
+
+<div class="figure-card figure-ton-that-thuyet fade-up" style="transition-delay:0.2s">
+  
+  <div class="figure-portrait portrait-tonthatthuyet">
+    <div class="figure-portrait-frame"></div>
+
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%A5_ch%C3%ADnh_%C4%91%E1%BA%A1i_th%E1%BA%A7n_T%C3%B4n_Th%E1%BA%A5t_Thuy%E1%BA%BFt.jpg/250px-Ph%E1%BB%A5_ch%C3%ADnh_%C4%91%E1%BA%A1i_th%E1%BA%A7n_T%C3%B4n_Th%E1%BA%A5t_Thuy%E1%BA%BFt.jpg" 
+      alt="Tôn Thất Thuyết"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Tôn Thất Thuyết</h3>
+    <div class="figure-years">1839 – 1913</div>
+    <span class="figure-field">Quan lại · Lãnh đạo kháng chiến</span>
+
+    <p class="figure-contribution">
+      Vị đại thần trung thành của triều Nguyễn, người lãnh đạo phong trào Cần Vương chống Pháp, 
+      tiêu biểu cho tinh thần yêu nước và ý chí kháng chiến kiên cường.
+    </p>
+
+    <a href="TTT.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+</div>
+
+
+    <div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- FIGURES2222-->
+<section id="figures">
+  <div class="section-header">
+    <span class="section-label">✦ Danh nhân Huế ✦</span>
+    <h2 class="section-title">Danh nhân văn hóa và khoa học</h2>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line rev"></div></div>
+  </div>
+  <div class="figures-grid">
+
+
+
+
+
+
+
+   <div class="figure-card figure-dang-huy-tru fade-up">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/vi/9/9d/DangHuyTru.jpg" 
+      alt="Đặng Huy Trứ"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Đặng Huy Trứ</h3>
+    <div class="figure-years">1825 – 1874</div>
+    <span class="figure-field">Quan lại · Canh tân</span>
+
+    <p class="figure-contribution">
+      Nhà cải cách tiêu biểu của triều Nguyễn, người có tư tưởng canh tân tiến bộ và là một trong những người 
+      đặt nền móng cho ngành nhiếp ảnh Việt Nam. Ông luôn đề cao thực học, phát triển kinh tế và mở mang dân trí.
+    </p>
+
+    <a href="DHT.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="figure-card figure-diem-phung-thi fade-up" style="transition-delay:0.1s">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <img 
+      src="https://www.artviet.net/wp-content/uploads/Nha-Dieu-Khac-Diem-Phung-Thi-Cung-Bo-Suu-Tap-Dieu-Khac-1-1536x708.png" 
+      alt="Điềm Phùng Thị"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Điềm Phùng Thị</h3>
+    <div class="figure-years">1920 – 2002</div>
+    <span class="figure-field">Điêu khắc · Nghệ thuật</span>
+
+    <p class="figure-contribution">
+      Nữ điêu khắc gia nổi tiếng của Việt Nam, người sáng tạo hệ thống 7 mô-đun hình học độc đáo, 
+      kết hợp tinh hoa nghệ thuật phương Đông và phương Tây, góp phần đưa nghệ thuật Việt Nam ra thế giới.
+    </p>
+
+    <a href="DPT.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+
+
+   <div class="figure-card figure-ton-that-tung fade-up" style="transition-delay:0.2s">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <img 
+      src="https://soytequangninh.gov.vn/upload/1002610/20220510/grabf4c95giao_su_ton_that_tung_3_e1587467753402.jpg" 
+      alt="Tôn Thất Tùng"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Tôn Thất Tùng</h3>
+    <div class="figure-years">1912 – 1982</div>
+    <span class="figure-field">Y học · Phẫu thuật</span>
+
+    <p class="figure-contribution">
+      Giáo sư, bác sĩ nổi tiếng của Việt Nam, người phát minh phương pháp mổ gan khô “phương pháp Tôn Thất Tùng”,
+      góp phần đưa y học Việt Nam đạt trình độ quốc tế.
+    </p>
+
+    <a href="TTT2.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="figure-card figure-nguyen-cu-trinh fade-up" style="transition-delay:0.2s">
+  <div class="figure-portrait">
+    <div class="figure-portrait-frame"></div>
+
+    <img 
+      src="https://bizweb.dktcdn.net/thumb/grande/100/422/960/products/1-863d9aae-f9b6-4d76-a5c8-441e70bc68eb.jpg?v=1630852143407" 
+      alt="Nguyễn Cư Trinh"
+      class="figure-img"
+    >
+
+  </div>
+
+  <div class="figure-body">
+    <h3 class="figure-name">Nguyễn Cư Trinh</h3>
+    <div class="figure-years">1716 – 1767</div>
+    <span class="figure-field">Quan lại · Văn học</span>
+
+    <p class="figure-contribution">
+      Danh thần triều Nguyễn, nhà văn hóa và nhà quân sự có nhiều đóng góp trong công cuộc mở rộng và bảo vệ 
+      vùng đất phía Nam. Ông còn là tác giả của nhiều tác phẩm văn học có giá trị.
+    </p>
+
+    <a href="NCTrinh.html" class="btn-outline">📖 Xem chi tiết</a>
+  </div>
+</div>
+
+
+
+
+
+
+    <div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-label">✦ Liên hệ ✦</span>
+    <h2 class="section-title">Liên hệ với chúng tôi</h2>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line rev"></div></div>
+    <p class="section-desc">Góp ý, chia sẻ tư liệu hoặc đặt câu hỏi về giáo dục địa phương Huế.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info fade-up">
+      <h3>Thông tin liên hệ</h3>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">
+          <strong>Giáo viên</strong>
+          Hoàng Thị Phượng<br>
+          Ngô Thị Thúy Hồng
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <strong>Điện thoại</strong>
+          0983295173
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          phuongthuong142@gmail.com
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-main">Tư liệu Giáo dục Địa phương Huế</span>
+      <p>Nền tảng giáo dục trực tuyến về di sản văn hóa, lịch sử và danh nhân vùng đất Cố đô Huế — phục vụ học sinh, giáo viên và cộng đồng yêu Huế.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Liên kết nhanh</h4>
+      <a href="#home">Trang chủ</a>
+      <a href="#bridges">Những cây cầu Huế</a>
+      <a href="#figures">Danh nhân Huế</a>
+      <a href="#contact">Liên hệ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kết nối với chúng tôi</h4>
+      <div class="social-links">
+        <a class="social-link" href="#" title="Facebook">📘</a>
+        <a class="social-link" href="#" title="YouTube">📺</a>
+        <a class="social-link" href="#" title="Zalo">💬</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Tư liệu Giáo dục Địa phương Huế — Trường trung học phổ thông Đặng Huy Trứ
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+// ===== HAMBURGER MENU =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+
+hamburger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  hamburger.classList.toggle('open', menuOpen);
+  mobileMenu.classList.toggle('open', menuOpen);
+});
+
+function closeMenu() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// ===== HEADER SCROLL =====
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ===== LIGHTBOX =====
+const galleryData = {
+  items: []
+};
+
+function openLightbox(emoji, caption) {
+  const lightbox = document.getElementById('lightbox');
+  document.getElementById('lightboxContent').textContent = emoji;
+  document.getElementById('lightboxCaption').textContent = caption;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event) {
+  if (!event || event.target === document.getElementById('lightbox') || event.target.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+});
+
+// ===== SMOOTH NAV LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 70;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ===== FORM SUBMIT =====
+document.querySelector('.btn-primary[style*="width:100%"]').addEventListener('click', function() {
+  this.textContent = '✅ Đã gửi thành công!';
+  this.style.background = 'linear-gradient(135deg, #2d8f56, #1a5c38)';
+  setTimeout(() => {
+    this.innerHTML = '📨 Gửi thông tin';
+    this.style.background = '';
+  }, 3000);
+});
+</script>
+</body>
+</html>
